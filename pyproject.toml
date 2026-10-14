@@ -1,0 +1,90 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "json2csv"
+version = "1.0.0"
+description = "Herramienta de linea de comandos para convertir JSON a CSV con estrategia de filtro."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Camila Vinegar" }]
+keywords = ["json", "csv", "filtro", "cli"]
+
+[tool.black]
+line-length = 88
+target-version = ["py310"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+extend-exclude = [".venv", "__pycache__", "doc", "docs"]
+
+[tool.ruff.lint]
+# Selecciona los mismos grupos que exige el enunciado: formato (E/W),
+# convenciones de docstrings (D) y buenas practicas de importacion (I).
+select = ["E", "W", "F", "I", "D", "UP", "B", "S", "C4", "RET", "ARG", "PTH"]
+ignore = [
+    "D203",  # incompatible con D211
+    "D213",  # incompatible con D212
+    "S101",  # pytest usa assert
+]
+
+[tool.ruff.lint.per-file-ignores]
+# En los tests se permite assert y el uso de subprocess para verificar la CLI real.
+"tests/*" = ["D100", "D101", "D102", "D103", "D104", "ARG", "S101", "S603", "S607"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "pep257"
+
+[tool.mypy]
+python_version = "3.10"
+files = ["src/json2csv.py", "src/collatz.py", "tests"]
+strict = true
+warn_unreachable = true
+show_error_codes = true
+disallow_untyped_defs = true
+no_implicit_optional = true
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = [
+    "-v",
+    "--strict-markers",
+    "--strict-config",
+    "--cov=json2csv",
+    "--cov=collatz",
+    "--cov-report=term-missing",
+    "--cov-report=xml:coverage.xml",
+    "--cov-report=html:htmlcov",
+    "--cov-fail-under=85",
+]
+
+[tool.coverage.run]
+branch = true
+source = ["json2csv", "collatz"]
+
+[tool.coverage.report]
+fail_under = 85
+show_missing = true
+exclude_lines = [
+    "pragma: no cover",
+    "if TYPE_CHECKING:",
+    "raise NotImplementedError",
+]
+
+[tool.pdoc]
+output-directory = "docs"
+format = "html"
+sort-identifiers = false
+
+[tool.bandit]
+# El codigo de produccion en src/ se audita completo. Se excluyen las
+# pruebas (el uso de assert es legitimo alli) y los directorios generados.
+exclude_dirs = ["tests", "htmlcov", "docs", "bin", ".venv", "cookiecutter"]
+# B101 (assert) no aplica al alcance auditado.

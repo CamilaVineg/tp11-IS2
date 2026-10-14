@@ -1,0 +1,57 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# --- Entornos virtuales ---
+.venv/
+venv/
+env/
+
+# --- Pruebas y cobertura ---
+.pytest_cache/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+.tox/
+.nox/
+
+# --- Tipado ---
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+.pytype/
+.ruff_cache/
+
+# --- Documentacion generada ---
+docs/
+site/
+
+# --- Artefactos de pruebas manuales ---
+salida.csv
+*.out
+
+# --- Sistema operativo y editores ---
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.swp
+*~
+
+# --- Secretos: nunca deben subirse ---
+.env
+.env.*
+*.pem
+*.key
+secrets/
+!.github/

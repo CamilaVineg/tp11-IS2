@@ -1,0 +1,10 @@
+# Herramientas de desarrollo, calidad y seguridad.
+# Instalar con: pip install -r requirements-dev.txt
+
+pytest
+pytest-cov
+ruff
+black
+mypy
+bandit
+pdoc

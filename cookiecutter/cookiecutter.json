@@ -1,0 +1,12 @@
+{
+    "project_slug": "mi-proyecto",
+    "project_name": "Mi Proyecto",
+    "module_name": "mi_modulo",
+    "version": "0.1.0",
+    "author": "Nombre Apellido",
+    "license": "MIT",
+    "python_version": "3.10",
+    "description": "Descripcion breve del proyecto.",
+    "coverage_min": "85",
+    "add_ci": "y"
+}

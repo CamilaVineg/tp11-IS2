@@ -1,0 +1,5 @@
+# Dependencias de ejecucion del proyecto.
+# El modulo json2csv.py solo usa la biblioteca estandar (json, csv,
+# argparse, sys), por lo que no hay dependencias de terceros en runtime.
+
+# Este archivo se usa con: pip install -r requirements.txt

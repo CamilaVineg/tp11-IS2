@@ -1,0 +1,29 @@
+# Herramientas de desarrollo, calidad y seguridad.
+# Instalar con: pip install -r requirements-dev.txt
+#
+# NOTA: todos los comandos se invocan como modulos de Python para no
+# depender de que los ejecutables esten en el PATH:
+#   python -m pytest
+#   python -m ruff check .
+#   python -m black --check .
+#   python -m mypy
+#   python -m bandit -r src/TP11 -c pyproject.toml
+
+# --- Pruebas y cobertura ---------------------------------------------------
+pytest==9.1.1
+pytest-cov==7.1.0
+
+# --- Formato y estilo (requisitos i, j, k, l) ------------------------------
+ruff==0.17.0
+black==26.10.1
+
+# --- Analisis de tipos (requisitos m, n) -----------------------------------
+mypy==2.4.0
+# pyright se instala aparte (Node.js): npm install -g pyright
+
+# --- Seguridad (requisitos p, q) ------------------------------------------
+bandit==1.9.4
+# truffleHog se instala aparte: https://github.com/trufflesecurity/trufflehog
+
+# --- Documentacion automatica (requisitos g, u) ----------------------------
+pdoc==16.0.0
